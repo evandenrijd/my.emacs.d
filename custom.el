@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (use-package smartparens nodejs-repl magit dash better-defaults))))
+    (undo-tree osx-dictionary use-package smartparens nodejs-repl magit dash better-defaults))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

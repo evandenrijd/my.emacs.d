@@ -35,6 +35,7 @@
      magit
      use-package
      smartparens
+     undo-tree
      )))
 
 (condition-case nil
@@ -43,6 +44,20 @@
    (package-refresh-contents)
    (init--install-packages)))
 
+(defun init--macos-install-packages ()
+  (packages-install
+   '(osx-dictionary
+     )))
+
+(if is-mac (condition-case nil
+    (init--macos-install-packages)
+  (error
+   (package-refresh-contents)
+   (init--macos-install-packages))))
+
+;; Lets start with a smattering of sanity
+(require 'sane-defaults)
+
 ;; Setup key bindings
 (require 'key-bindings)
 
@@ -50,3 +65,4 @@
 (require 'setup-smartparens)
 (require 'setup-perl)
 (require 'setup-grep-ack)
+(if is-mac (require 'setup-mac))
