@@ -48,3 +48,5 @@
 
 (eval-after-load 'magit '(require 'setup-magit))
 (require 'setup-smartparens)
+(require 'setup-perl)
+(require 'setup-grep-ack)
