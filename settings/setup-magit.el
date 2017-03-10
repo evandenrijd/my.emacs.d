@@ -1,5 +1,8 @@
-;; full screen magit-status
+;;; setup-magit --- magit
+;;; Commentary:
+;;; Code:
 
+;; full screen magit-status
 (defun magit-status-fullscreen (prefix)
   (interactive "P")
   (magit-status)
@@ -7,16 +10,14 @@
     (delete-other-windows)))
 
 ;; don't prompt me
-
 (set-default 'magit-unstage-all-confirm nil)
 (set-default 'magit-stage-all-confirm nil)
 (set-default 'magit-push-always-verify nil)
 (set-default 'magit-revert-buffers 'silent)
 
 ;; move cursor into position when entering commit message
-
 (defun my/magit-cursor-fix ()
-  (beginning-of-buffer)
+  (goto-char (point-min))
   (when (looking-at "#")
     (forward-line 2)))
 
@@ -25,7 +26,7 @@
 ;; full screen vc-annotate
 
 (defun vc-annotate-quit ()
-  "Restores the previous window configuration and kills the vc-annotate buffer"
+  "Restore the previous window configuration and kill the `vc-annotate' buffer."
   (interactive)
   (kill-buffer)
   (jump-to-register :vc-annotate-fullscreen))
@@ -40,3 +41,4 @@
      (define-key vc-annotate-mode-map (kbd "q") 'vc-annotate-quit)))
 
 (provide 'setup-magit)
+;;; setup-magit.el ends here

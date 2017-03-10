@@ -1,12 +1,16 @@
+;;; init --- start of everything
+;;; Commentary:
+;;; Code:
+
 (package-initialize)
 
 ;; Are we on a mac?
-(setq is-mac (equal system-type 'darwin))
+(defvar is-mac (equal system-type 'darwin))
 
 ;; Set path to dependencies
-(setq site-lisp-dir
-      (expand-file-name "site-lisp" user-emacs-directory))
-(setq settings-dir
+(defvar site-lisp-dir
+  (expand-file-name "site-lisp" user-emacs-directory))
+(defvar settings-dir
       (expand-file-name "settings" user-emacs-directory))
 
 ;; Set up load path
@@ -25,35 +29,62 @@
       (concat user-emacs-directory "users/" user-login-name))
 (add-to-list 'load-path user-settings-dir)
 
-;; Setup packages
+;; bootstrap use-package
 (require 'setup-package)
 
-;; Install extensions if they're missing
-(defun init--install-packages ()
-  (packages-install
-   '(better-defaults
-     magit
-     use-package
-     smartparens
-     undo-tree
-     )))
+(use-package better-defaults
+  :ensure t)
 
-(condition-case nil
-    (init--install-packages)
-  (error
-   (package-refresh-contents)
-   (init--install-packages)))
+(use-package magit
+  :ensure t
+  :bind (("C-x m" . magit-status-fullscreen))
+  :config (require 'setup-magit))
 
-(defun init--macos-install-packages ()
-  (packages-install
-   '(osx-dictionary
-     )))
+(use-package smartparens
+  :ensure t
+  :config (require 'setup-smartparens))
 
-(if is-mac (condition-case nil
-    (init--macos-install-packages)
-  (error
-   (package-refresh-contents)
-   (init--macos-install-packages))))
+(use-package undo-tree
+  :ensure t)
+
+(if is-mac
+    (use-package exec-path-from-shell
+      :ensure t
+      :config (exec-path-from-shell-initialize)))
+
+(use-package json-mode
+  :ensure t)
+
+(use-package yaml-mode
+  :ensure t
+  :config (add-to-list 'auto-mode-alist '("\\.\\(yml\\|yaml\\)\\'" . yaml-mode)))
+
+(use-package rpm-spec-mode
+  :ensure t
+  :config (add-to-list 'auto-mode-alist '("\\.spec\\'" . rpm-spec-mode)))
+
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package mac-speak
+  :if is-mac
+  :load-path "site-lisp/"
+  :bind (("C-x s" . mac-speak)))
+
+(use-package osx-dictionary
+  :if is-mac
+  :ensure t
+  :bind (("s-d" . osx-dictionary-search-word-at-point)
+         ("s-i" . osx-dictionary-search-input)))
 
 ;; Lets start with a smattering of sanity
 (require 'sane-defaults)
@@ -61,8 +92,12 @@
 ;; Setup key bindings
 (require 'key-bindings)
 
-(eval-after-load 'magit '(require 'setup-magit))
-(require 'setup-smartparens)
 (require 'setup-perl)
 (require 'setup-grep-ack)
 (if is-mac (require 'setup-mac))
+(require 'setup-js2-mode)
+
+(require 'setup-info)
+
+(provide 'init)
+;;; init.el ends here

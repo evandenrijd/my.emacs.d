@@ -1,6 +1,4 @@
 (require 'dash)
-(require 'mac-speak)
-(global-set-key (kbd "C-x s") 'mac-speak)
 
 ;; change command to meta, and ignore option to use weird Norwegian keyboard
 ;; (setq mac-option-modifier 'super)
@@ -110,9 +108,5 @@
 (setq manpath (append mac-osx-manpath xcode-manpath))
 (setenv "MANPATH" (mapconcat 'identity manpath ":"))
 ;;-- End Mac OS X MANPATH ---------------------------------------------------------
-
-(require 'osx-dictionary)
-(global-set-key (kbd "s-d") 'osx-dictionary-search-word-at-point)
-(global-set-key (kbd "s-i") 'osx-dictionary-search-input)
 
 (provide 'setup-mac)

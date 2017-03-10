@@ -1,4 +1,7 @@
-;;; use a better perl mode
+;;; setup-perl --- use a better perl mode
+;;; Commentary:
+;;; Code:
+
 (setq auto-mode-alist
       (cons '("\\.\\([pP][Llm]\\|al\\|t\\)\\'" . cperl-mode)
             auto-mode-alist ) )
@@ -15,3 +18,4 @@
 ;; (setenv "MANPATH" (eval '(mapconcat 'identity manpath ":")))
 
 (provide 'setup-perl)
+;;; setup-perl.el ends here
