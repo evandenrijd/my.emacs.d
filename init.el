@@ -11,7 +11,7 @@
 (defvar site-lisp-dir
   (expand-file-name "site-lisp" user-emacs-directory))
 (defvar settings-dir
-      (expand-file-name "settings" user-emacs-directory))
+  (expand-file-name "settings" user-emacs-directory))
 
 ;; Set up load path
 (add-to-list 'load-path site-lisp-dir)
@@ -34,6 +34,9 @@
 
 (use-package better-defaults
   :ensure t)
+
+;; Remove all trailing whitespace from every buffer before saving to a file.
+(add-hook 'write-file-functions 'delete-trailing-whitespace)
 
 (use-package magit
   :ensure t
