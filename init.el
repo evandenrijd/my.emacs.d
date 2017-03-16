@@ -35,9 +35,6 @@
 (use-package better-defaults
   :ensure t)
 
-;; Remove all trailing whitespace from every buffer before saving to a file.
-(add-hook 'write-file-functions 'delete-trailing-whitespace)
-
 (use-package magit
   :ensure t
   :bind (("C-x m" . magit-status-fullscreen))
@@ -92,15 +89,25 @@
 ;; Lets start with a smattering of sanity
 (require 'sane-defaults)
 
+;; set ido-mode everywhere and +
+(use-package ido-ubiquitous
+  :ensure t
+  :config (ido-ubiquitous-mode 1)
+  :init (ido-mode 1) (ido-everywhere t))
+
 ;; Setup key bindings
 (require 'key-bindings)
 
 (require 'setup-perl)
 (require 'setup-grep-ack)
+
 (if is-mac (require 'setup-mac))
 (require 'setup-js2-mode)
 
 (require 'setup-info)
+
+;; Remove all trailing whitespace from every buffer before saving to a file.
+(add-hook 'write-file-functions 'delete-trailing-whitespace)
 
 (provide 'init)
 ;;; init.el ends here
