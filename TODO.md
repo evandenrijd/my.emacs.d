@@ -7,3 +7,4 @@ TODO
     ;; (setq manpath (eval '(append perl-manpath (getenv "MANPATH"))))
     ;; (setenv "MANPATH" (eval '(mapconcat 'identity manpath ":")))
     ;; => use exec-path-from-shell for this
+    ;; => see also FIXME in setup-mac

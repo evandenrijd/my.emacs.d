@@ -93,7 +93,14 @@
 (use-package ido-ubiquitous
   :ensure t
   :config (ido-ubiquitous-mode 1)
-  :init (ido-mode 1) (ido-everywhere t))
+  :init (ido-mode 1) (ido-everywhere t)
+  ;; Ignore .DS_Store files with ido mode
+  (if is-mac (add-to-list 'ido-ignore-files "\\.DS_Store"))
+)
+
+(use-package ace-jump-mode
+  :ensure t
+  :bind ("s-SPC" . ace-jump-mode))
 
 ;; Setup key bindings
 (require 'key-bindings)
