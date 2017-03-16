@@ -98,8 +98,19 @@
 ;; Setup key bindings
 (require 'key-bindings)
 
-(require 'setup-perl)
-(require 'setup-grep-ack)
+;; (require 'setup-perl)
+(use-package cperl-mode
+  :mode "\\.\\([pP][Llm]\\|al\\|t\\)\\'"
+  :interpreter "perl"
+  :config (add-hook 'cperl-mode-hook
+                    (lambda ()
+                      (set (make-local-variable 'compile-command)
+                           (format "perl %s" (buffer-file-name))))))
+
+(use-package setup-grep-ack
+  :init (setq ack-command "ag --nogroup --nocolor") ;; use ag instead of ack
+  )
+
 
 (if is-mac (require 'setup-mac))
 (require 'setup-js2-mode)
