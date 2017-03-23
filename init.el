@@ -92,11 +92,20 @@
 ;; set ido-mode everywhere and +
 (use-package ido-ubiquitous
   :ensure t
-  :config (ido-ubiquitous-mode 1)
   :init (ido-mode 1) (ido-everywhere t)
   ;; Ignore .DS_Store files with ido mode
   (if is-mac (add-to-list 'ido-ignore-files "\\.DS_Store"))
+  :config (ido-ubiquitous-mode 1)
 )
+
+(use-package find-file-in-project
+  :ensure t
+  ;; :config (require 'setup-ffip)
+
+  ;;(remark that: C-x C-s is save-buffer, C-x C-f is find-file and C-x C-d is
+  ;;find-dir, the following keys on a qwerty-keyboard are g and h.)
+  :bind ("C-x C-g" . find-file-in-project)
+  )
 
 (use-package ace-jump-mode
   :ensure t
