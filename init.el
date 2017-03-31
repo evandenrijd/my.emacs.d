@@ -21,9 +21,6 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
-;; Set up appearance early
-(require 'appearance)
-
 ;; Settings for currently logged in user
 (setq user-settings-dir
       (concat user-emacs-directory "users/" user-login-name))
@@ -31,6 +28,15 @@
 
 ;; bootstrap use-package
 (require 'setup-package)
+
+;; Make zooming affect frame instead of buffers
+(use-package zoom-frm
+  :demand ;; force loading before appearance
+  :bind (("s-+" . zoom-in)
+         ("s--" . zoom-out)))
+
+(use-package appearance
+  :demand) ;; Set up appearance early
 
 (use-package better-defaults
   :ensure t)

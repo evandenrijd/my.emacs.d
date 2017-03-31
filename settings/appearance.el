@@ -1,6 +1,3 @@
-;; Make zooming affect frame instead of buffers
-(require 'zoom-frm)
-
 ;; essentially set the font-size
 (setq van/default-font "-*-*-*-*-*-*-20-*-*-*-m-0-iso10646-1")
 

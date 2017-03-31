@@ -46,7 +46,4 @@
 (global-set-key [C-f11] 'compile)
 (global-set-key [f12] 'next-error)
 
-(if is-mac (define-key global-map (kbd "s-+") 'zoom-in))
-(if is-mac (define-key global-map (kbd "s--") 'zoom-out))
-
 (provide 'key-bindings)

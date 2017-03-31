@@ -5,8 +5,8 @@
 ;; (setq mac-command-modifier 'meta)
 (setq ns-function-modifier 'hyper)
 
-(global-set-key (kbd "s-u") 'universal-argument)
-(global-set-key (kbd "s--") 'negative-argument)
+;; (global-set-key (kbd "s-u") 'universal-argument)
+;; (global-set-key (kbd "s--") 'negative-argument)
 (--dotimes 5 (global-set-key (read-kbd-macro (format "s-%d" it)) 'digit-argument))
 
 ;; redefine read-char, at least for invocation from elisp
