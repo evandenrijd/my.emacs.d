@@ -141,7 +141,9 @@
   :ensure t
   :config (add-to-list 'company-backends 'company-elm)) ;; MacOS: /Shared/npm_cli $ npm i elm-oracle --save
 
-(if is-mac (require 'setup-mac))
+(use-package setup-mac
+  :if is-mac)
+
 (require 'setup-js2-mode)
 
 (require 'setup-info)
