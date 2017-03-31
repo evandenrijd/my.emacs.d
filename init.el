@@ -133,6 +133,14 @@
   :init (setq ack-command "ag --nogroup --nocolor") ;; use ag instead of ack
   )
 
+;; used in elm-mode
+(use-package company
+  :ensure t)
+
+(use-package elm-mode
+  :ensure t
+  :config (add-to-list 'company-backends 'company-elm)) ;; MacOS: /Shared/npm_cli $ npm i elm-oracle --save
+
 (if is-mac (require 'setup-mac))
 (require 'setup-js2-mode)
 
