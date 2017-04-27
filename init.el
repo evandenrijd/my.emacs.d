@@ -144,6 +144,15 @@
 (use-package setup-mac
   :if is-mac)
 
+(use-package protobuf-mode
+  :ensure t
+  :config (add-hook 'protobuf-mode-hook
+                    (lambda ()
+                      (c-add-style "two-spaces-style-no-tabs" ((c-basic-offset . 2)
+                                                               (indent-tabs-mode . nil))
+                                   t)))
+  )
+
 (require 'setup-js2-mode)
 
 (require 'setup-info)
