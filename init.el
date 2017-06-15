@@ -77,8 +77,13 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+(use-package angular-mode
+  :ensure t)
+
 (use-package flycheck
   :ensure t
+  :config (setq-default flycheck-disabled-checkers
+                        (append flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
   :init (global-flycheck-mode))
 
 (use-package mac-speak
@@ -153,7 +158,25 @@
                                    t)))
   )
 
+(use-package multiple-cursors
+  :ensure t)
+
+;; begin Haskell
+(use-package haskell-mode
+  :ensure t)
+
+(use-package intero
+  :ensure t)
+;; end Haskell
+
+(use-package neotree
+  :ensure t
+  :bind ([f2] . neotree-toggle))
+
 (require 'setup-js2-mode)
+;; (use-package company-tern
+;;   :ensure t
+;;   :config (add-to-list 'company-backends 'company-tern))
 
 (require 'setup-info)
 

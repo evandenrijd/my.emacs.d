@@ -46,4 +46,6 @@
 (global-set-key [C-f11] 'compile)
 (global-set-key [f12] 'next-error)
 
+(global-set-key (kbd "C-x l") 'goto-line)
+
 (provide 'key-bindings)
