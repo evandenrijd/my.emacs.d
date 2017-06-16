@@ -174,6 +174,11 @@
   :bind ([f2] . neotree-toggle)
   :init (setq neo-window-width 40)) ;;fixed buffer width
 
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 (require 'setup-tide)
 
 (require 'setup-js2-mode)
