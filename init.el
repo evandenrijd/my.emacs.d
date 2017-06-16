@@ -171,7 +171,10 @@
 
 (use-package neotree
   :ensure t
-  :bind ([f2] . neotree-toggle))
+  :bind ([f2] . neotree-toggle)
+  :init (setq neo-window-width 40)) ;;fixed buffer width
+
+(require 'setup-tide)
 
 (require 'setup-js2-mode)
 ;; (use-package company-tern
