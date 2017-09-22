@@ -163,10 +163,45 @@
 
 ;; begin Haskell
 (use-package haskell-mode
-  :ensure t)
+  :ensure t
+  :bind ("C-c h" . haskell-hoogle)
+  :init (setq haskell-hoogle-command "hoogle --info ")
+  )
 
 (use-package intero
-  :ensure t)
+  :ensure t
+  :config (intero-global-mode 1) ;; set Intero 'on'
+  )
+;; Intero key bindings from web:
+;; Key binding	Description
+;; --------------------------------------------------------------
+;; M-.	        Jump to definition
+;; C-c C-i	Show information of identifier at point
+;; C-c C-t	Show the type of thing at point, or the selection
+;; C-u C-c C-t	Insert a type signature for the thing at point
+;; C-c C-l	Load this module in the REPL
+;; C-c C-c	Evaluate the selected region in the REPL
+;; C-c C-r	Apply suggestions from GHC
+;; C-c C-k	Clear REPL
+;; C-c C-z	Switch to and from the REPL
+
+;; intero-mode minor mode keybindings from Emacs C-h b:
+;; Key             binding
+;; ---             -------
+
+;; C-c             Prefix Command
+;; ESC             Prefix Command
+
+;; M-.             intero-goto-definition
+;; M-?             intero-uses-at
+
+;; C-c C-c         intero-repl-eval-region
+;; C-c C-e         intero-expand-splice-at-point
+;; C-c TAB         intero-info
+;; C-c C-l         intero-repl-load
+;; C-c C-r         intero-apply-suggestions
+;; C-c C-t         intero-type-at
+;; C-c C-z         intero-repl
 ;; end Haskell
 
 (use-package neotree
