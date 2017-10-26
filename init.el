@@ -230,5 +230,8 @@
 ;; Remove all trailing whitespace from every buffer before saving to a file.
 (add-hook 'write-file-functions 'delete-trailing-whitespace)
 
+;; Do NOT know who puts the menu-bar-mode off, set it on again.
+(custom-set-variables '(menu-bar-mode t))
+
 (provide 'init)
 ;;; init.el ends here
