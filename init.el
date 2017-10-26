@@ -214,6 +214,10 @@
   :config
   (editorconfig-mode 1))
 
+(use-package org-ref
+  :ensure t
+  :init (setq reftex-default-bibliography '("/Users/van/vc/docs/orgs/have_copy.bib")))
+
 (require 'setup-tide)
 
 (require 'setup-js2-mode)
