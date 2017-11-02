@@ -218,6 +218,9 @@
   :ensure t
   :init (setq reftex-default-bibliography '("/Users/van/vc/docs/orgs/have_copy.bib")))
 
+(use-package pomidor
+  :ensure t)
+
 (require 'setup-tide)
 
 (require 'setup-js2-mode)
