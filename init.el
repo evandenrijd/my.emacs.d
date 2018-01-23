@@ -204,6 +204,10 @@
 ;; C-c C-z         intero-repl
 ;; end Haskell
 
+;; Add CIDER: Clojure Integrated Development Environment that Rocks
+(use-package cider
+  :ensure t)
+
 (use-package neotree
   :ensure t
   :bind ([f2] . neotree-toggle)
