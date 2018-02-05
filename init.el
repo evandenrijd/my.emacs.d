@@ -138,13 +138,26 @@
   :init (setq ack-command "ag --nogroup --nocolor") ;; use ag instead of ack
   )
 
-;; used in elm-mode
+;; used in elm-mode, cider
 (use-package company
-  :ensure t)
+  :ensure t
+  :config (progn (global-company-mode)
+                 (setq company-idle-delay nil) ; never start completions automatically
+                 )
+  :bind (
+         ("M-TAB" . company-complete) ; use M-TAB, a.k.a. C-M-i, as manual trigger
+         ("TAB" . company-indent-or-complete) ; To make TAB complete, without
+                                              ; losing the ability to manually
+                                              ; indent, you can add this to your
+                                              ; config:
+         )
+  )
+
 
 (use-package elm-mode
   :ensure t
-  :config (add-to-list 'company-backends 'company-elm)) ;; MacOS: /Shared/npm_cli $ npm i elm-oracle --save
+  ;; :config (add-to-list 'company-backends 'company-elm) ;; MacOS: /Shared/npm_cli $ npm i elm-oracle --save
+  )
 
 (use-package setup-mac
   :if is-mac)
