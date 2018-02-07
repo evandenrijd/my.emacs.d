@@ -233,6 +233,9 @@
 (use-package pomidor
   :ensure t)
 
+(use-package lua-mode
+  :ensure t)
+
 (require 'setup-tide)
 
 (require 'setup-js2-mode)
