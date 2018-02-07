@@ -141,18 +141,13 @@
 ;; used in elm-mode, cider
 (use-package company
   :ensure t
-  :config (progn (global-company-mode)
-                 (setq company-idle-delay nil) ; never start completions automatically
+  :init (add-hook 'after-init-hook 'global-company-mode) ; everywhere company-mode
+  :config (progn (setq company-idle-delay nil) ; never start completions automatically
                  )
   :bind (
-         ("M-TAB" . company-complete) ; use M-TAB, a.k.a. C-M-i, as manual trigger
-         ("TAB" . company-indent-or-complete) ; To make TAB complete, without
-                                              ; losing the ability to manually
-                                              ; indent, you can add this to your
-                                              ; config:
+         ("M-/" . company-complete-common)
          )
   )
-
 
 (use-package elm-mode
   :ensure t
