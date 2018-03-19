@@ -67,7 +67,8 @@
 
 (use-package rpm-spec-mode
   :ensure t
-  :config (add-to-list 'auto-mode-alist '("\\.spec\\'" . rpm-spec-mode)))
+  :config (add-to-list 'auto-mode-alist '("\\.spec\\'" . rpm-spec-mode))
+  )
 
 (use-package markdown-mode
   :ensure t
@@ -238,6 +239,11 @@
 
 (use-package groovy-mode
   :ensure t)
+
+(use-package dockerfile-mode
+  :ensure t
+  :config (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+  )
 
 (require 'setup-tide)
 
