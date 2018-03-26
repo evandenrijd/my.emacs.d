@@ -10,6 +10,8 @@
 (add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'yaml-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'repl-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'org-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'cider-repl-mode-hook 'turn-on-smartparens-strict-mode)
 
 (defmacro def-pairs (pairs)
   `(progn
