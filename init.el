@@ -229,7 +229,8 @@
 
 (use-package org-ref
   :ensure t
-  :init (setq reftex-default-bibliography '("/Users/van/vc/docs/orgs/have_copy.bib")))
+  :init (setq reftex-default-bibliography '("/Users/van/vc/docs/orgs/references.bib")))
+
 (setq org-latex-listings 'minted
       org-latex-packages-alist '(("" "minted"))
       org-latex-pdf-process
