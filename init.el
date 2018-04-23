@@ -251,6 +251,9 @@
   :config (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
   )
 
+(use-package idris-mode
+  :ensure t)
+
 (require 'setup-tide)
 
 (require 'setup-js2-mode)
