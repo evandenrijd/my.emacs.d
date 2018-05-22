@@ -174,7 +174,8 @@
 (use-package haskell-mode
   :ensure t
   :bind ("C-c h" . haskell-hoogle)
-  :init (setq haskell-hoogle-command "hoogle --info ")
+  :init (setq haskell-hoogle-command "hoogle --info "
+              haskell-tags-on-save t)
   )
 
 (use-package intero
